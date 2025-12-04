@@ -1,3 +1,5 @@
 Adicionar nomes da turma em branchs próprias e fazer merge com a main!
 
 Marcelo jacinto Ferreira
+
+Bruna de Oliveira Medeiros
