@@ -37,7 +37,7 @@ namespace prova02 {
 
                             for (int i = 1; i <= N; i++) {
                                 if (i % 2 == 0) {
-                                Console.WriteLine("Par: "+ i);
+                                    Console.WriteLine("Par: " + i);
                                     par++;
                                 }
                                 else {
@@ -56,7 +56,7 @@ namespace prova02 {
                         break;
                     case 2:
                         while (continuar != "n") {
-                        Console.WriteLine("************* Media Com Validacao ***************\n\n\n\n\n");
+                            Console.WriteLine("************* Media Com Validacao ***************\n\n\n\n\n");
 
                             int[] notas = new int[8];
                             int nota;
@@ -69,10 +69,10 @@ namespace prova02 {
 
                                 while (!int.TryParse(Console.ReadLine(), out nota)) {
                                     Console.Write($"A {i + 1}ª nota deve ser entre 0 e 10: ");
-                                    
+
                                 }
 
-                            if (nota >= 0 && nota <= 10) {
+                                if (nota >= 0 && nota <= 10) {
                                     notas[i] = nota;
                                     soma += nota;
                                     numValidos++;
@@ -81,9 +81,9 @@ namespace prova02 {
                                 else {
                                     nunDescartados++;
 
-                                }                              
-                                
-                           }
+                                }
+
+                            }
                             if (numValidos > 0) {
                                 media = soma / numValidos;
 
@@ -91,7 +91,7 @@ namespace prova02 {
                             else {
                                 media = 0;
                             }
-                            
+
                             Console.WriteLine("Notas digitadas:");
                             Console.WriteLine(string.Join(", ", notas));
                             Console.WriteLine("\nNumeros validos: " + numValidos);
@@ -103,11 +103,56 @@ namespace prova02 {
                             Console.Clear();
 
                         }
-                        Console.WriteLine("Media Com Validacao");
+
 
                         break;
                     case 3:
-                        Console.WriteLine("Sistema De Acesso Avancado");
+                        while (continuar != "n") {
+
+                            int contador = 0;
+                            int maxTentativas = 3;
+                            string usuarioCorreto = "admin";
+                            string senhaCorreta = "2025";
+                            string usuario;
+                            string senha;
+
+                            Console.WriteLine("                             ************* Sistema De Acesso Avancado ***************\n\n\n\n\n");
+                            while (contador < maxTentativas) {
+
+                                Console.Write(@$"                                                 {contador + 1}ª Tentativa.
+                                                 Digite o usuário: ");
+                                usuario = Console.ReadLine();
+                                Console.Write(@"                                                 Digite a senha: ");
+                                senha = Console.ReadLine();
+
+                                if (usuario == usuarioCorreto && senha == senhaCorreta) {
+                                    Console.WriteLine("\n           Acesso concedido. Bem-vindo, admin!\n\n\n\n");
+                                    contador = maxTentativas +1;
+                                }
+                                else if (usuario != usuarioCorreto && senha == senhaCorreta) {
+                                    Console.WriteLine($"         Acesso negado. Usuário incorreto. Tentativa {contador + 1}/{maxTentativas}.\n");
+                                    contador++;
+                                }
+                                else if (usuario == usuarioCorreto && senha != senhaCorreta) {
+                                    Console.WriteLine($"         Acesso negado. Senha incorreta.Tentativa {contador + 1}/{maxTentativas}.\n");
+                                    contador++;
+                                }
+                                else if (usuario != usuarioCorreto && senha != senhaCorreta) {
+                                    Console.WriteLine($"         Acesso negado. Usuário e senha incorretos. Tentativa {contador + 1}/{maxTentativas}.\n");
+                                    contador++;
+                                }
+
+                            }
+                            if (contador == maxTentativas) {
+                                Console.WriteLine("         Número máximo de tentativas excedido. Acesso bloqueado.\n\n\n\n");
+                            }
+
+
+                            Console.WriteLine("\n\n\n\n\n                       deseja repetir digite 's', se quiser sair digite 'n'.");
+                            continuar = Console.ReadLine();
+                            Console.Clear();
+
+                        }
                         break;
                     case 4:
                         Console.WriteLine("Controle De Estoque");
@@ -122,7 +167,7 @@ namespace prova02 {
                         Console.WriteLine("Opção inválida. Tente novamente.");
                         break;
                 }
-                
+
                 Console.Clear();
 
             } while (opcao != 0);
