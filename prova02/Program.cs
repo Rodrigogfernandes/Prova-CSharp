@@ -59,25 +59,46 @@ namespace prova02 {
                         Console.WriteLine("************* Media Com Validacao ***************\n\n\n\n\n");
 
                             int[] notas = new int[8];
-                            int nota = 0;
+                            int nota;
+                            int soma = 0;
                             int media;
+                            int numValidos = 0;
+                            int nunDescartados = 0;
                             for (int i = 0; i < notas.Length; i++) {
-                                Console.Write($"Digite a {i + 1}ª nota : ");
+                                Console.Write($"\rDigite a {i + 1}ª nota : ");
 
-                                while (!int.TryParse(Console.ReadLine(), out nota) || nota < 0 || nota > 10) {
+                                while (!int.TryParse(Console.ReadLine(), out nota)) {
                                     Console.Write($"A {i + 1}ª nota deve ser entre 0 e 10: ");
                                     
                                 }
-                                notas[i] = nota;
+
+                            if (nota >= 0 && nota <= 10) {
+                                    notas[i] = nota;
+                                    soma += nota;
+                                    numValidos++;
+
+                                }
+                                else {
+                                    nunDescartados++;
+
+                                }                              
                                 
+                           }
+                            if (numValidos > 0) {
+                                media = soma / numValidos;
 
                             }
+                            else {
+                                media = 0;
+                            }
+                            
+                            Console.WriteLine("Notas digitadas:");
+                            Console.WriteLine(string.Join(", ", notas));
+                            Console.WriteLine("\nNumeros validos: " + numValidos);
+                            Console.WriteLine("Numeros descartados: " + nunDescartados);
+                            Console.WriteLine("Média das notas válidas: " + media);
 
-
-
-
-
-                            Console.WriteLine("deseja repetir digite 's', se quiser sair digite 'n'.");
+                            Console.WriteLine("\n\n\n\n\ndeseja repetir digite 's', se quiser sair digite 'n'.");
                             continuar = Console.ReadLine();
                             Console.Clear();
 
