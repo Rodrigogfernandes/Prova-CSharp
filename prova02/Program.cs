@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Net.WebSockets;
+using System.Xml;
 
 namespace prova02 {
     class Program {
@@ -127,7 +129,7 @@ namespace prova02 {
 
                                 if (usuario == usuarioCorreto && senha == senhaCorreta) {
                                     Console.WriteLine("\n           Acesso concedido. Bem-vindo, admin!\n\n\n\n");
-                                    contador = maxTentativas +1;
+                                    contador = maxTentativas + 1;
                                 }
                                 else if (usuario != usuarioCorreto && senha == senhaCorreta) {
                                     Console.WriteLine($"         Acesso negado. Usuário incorreto. Tentativa {contador + 1}/{maxTentativas}.\n");
@@ -155,6 +157,46 @@ namespace prova02 {
                         }
                         break;
                     case 4:
+                        while (continuar != "n") {
+                            Console.WriteLine("************* Controle De Estoque ***************\n\n\n");
+                            int[] codigos = new int[200];
+                            int contador = 0;
+                            int[] itemEspecial = new int[200];
+                            int soma = 0;
+
+                            for (int i = 0; i < codigos.Length; i++) {
+
+                                codigos[i] = i + 1;
+
+                                if (codigos[i] % 2 == 0 && codigos[i] % 4 == 0) {
+                                    if (i != 0) {
+                                        itemEspecial[contador] = codigos[i];
+                                        contador++;
+                                    }
+                                }
+                                
+                                
+                            }
+
+                            Console.WriteLine("todos os codigos\n");
+                            Console.Write(string.Join(", ", codigos));
+                            Console.WriteLine($"\n\nTotal de itens no estoque: {codigos.Length}");
+
+                            Console.WriteLine("\n\nitens especiais\n");
+                            for (int i = 0; i < contador ; i++) {
+                                Console.Write(itemEspecial[i] + " ");
+                            }
+                            Console.WriteLine($"\n\n Total de itens especiais no estoque: {contador}");
+
+                            for (int i = 0; i < contador; i++) {
+                               soma += itemEspecial[i];
+                            }
+                            Console.WriteLine($" Soma dos codigos especiais: {soma}");
+
+                            Console.WriteLine("\n\n\ndeseja repetir digite 's', se quiser sair digite 'n'.");
+                            continuar = Console.ReadLine();
+                            Console.Clear();
+                        }
                         Console.WriteLine("Controle De Estoque");
                         break;
                     case 5:
