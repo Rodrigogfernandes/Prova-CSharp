@@ -226,20 +226,86 @@ namespace prova02 {
                             Console.WriteLine($"\nO menor numero Par encontrado foi: {menorNumeroPar}");
                             Console.WriteLine($"\nA soma dos numeros Impares encontrados foi: {somaNumerosImpar}");
 
-
-
-
-
-
-
-
-
                             Console.WriteLine("\n\n\ndeseja repetir digite 's', se quiser sair digite 'n'.");
                             continuar = Console.ReadLine();
                             Console.Clear();
                         }
                         break;
+
                     case 6:
+                        
+                        while (continuar != "n") {
+                          double saldo = 1000;
+                            int sair = 0;
+                            string mensagem = "";
+                            string mensagem2 = "";
+                            while (sair != 4) {
+                            Console.WriteLine("      *******************Desafio Final Raciocinio**********************\n\n\n");
+
+                                Console.WriteLine(@$" 
+                 +---------------------------+ 
+                 |      Banco Imaginario     |    {mensagem}
+                 +===========================+    {mensagem2}  
+                 |    1. Consultar saldo     | 
+                 |    2. Sacar valor         |
+                 |    3. Depositar valor     | 
+                 |    4. Sair                |
+                 +---------------------------+
+                                ");
+                                Console.Write("                Digite a opção desejada: ");
+                                if (!int.TryParse(Console.ReadLine(), out sair)|| sair < 1 || sair > 4) {
+                                    Console.Clear();
+                                    Console.WriteLine("Opção inválida. Tente novamente.");
+                                    continue;
+                                }
+                                switch (sair) {
+                                    case 1:
+                                        mensagem2 = $"Seu saldo atual é: {saldo:C}";
+                                        Console.Clear();
+                                        break;
+                                    case 2:
+                                        Console.Write("\n                Digite o valor que deseja sacar: R$ ");
+                                        double valorSaque;
+                                        if (!double.TryParse(Console.ReadLine(), out valorSaque) || valorSaque <= 0) {
+                                            Console.WriteLine("Valor inválido. Tente novamente.");
+                                        }
+                                        else if (valorSaque > saldo) {
+                                            mensagem = "Saldo insuficiente para esse saque.";
+                                        }
+                                        else {
+                                            saldo -= valorSaque;
+                                            mensagem = $"Saque de: {valorSaque:C} realizado com sucesso.";
+                                            mensagem2 = $"Novo saldo: {saldo:C}";
+
+                                        }
+                                        Console.Clear();
+                                        break;
+                                    case 3:
+                                        Console.Write("\n                Digite o valor que deseja depositar: R$ ");
+                                        double valorDeposito;
+                                        if (!double.TryParse(Console.ReadLine(), out valorDeposito) || valorDeposito <= 0) {
+                                            Console.WriteLine("Valor inválido. Tente novamente.");
+                                        }
+                                        else {
+                                            saldo += valorDeposito;
+                                            mensagem = $"Depósito de: {valorDeposito:C} realizado com sucesso.";
+                                            mensagem2 = $"Novo saldo: {saldo:C}";
+                                        }
+                                        Console.Clear();
+                                        break;
+                                    case 4:
+                                        Console.WriteLine("Saindo do sistema. Obrigado por usar nosso serviço!\n");
+                                        break;
+                                }
+
+
+                            }
+
+                           
+                            Console.WriteLine("\n\n\ndeseja repetir digite 's', se quiser sair digite 'n'.");
+                            continuar = Console.ReadLine();
+                            Console.Clear();
+                        }
                         Console.WriteLine("Desafio Final Raciocinio");
                         break;
                     default:
