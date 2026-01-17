@@ -174,8 +174,8 @@ namespace prova02 {
                                         contador++;
                                     }
                                 }
-                                
-                                
+
+
                             }
 
                             Console.WriteLine("todos os codigos\n");
@@ -183,13 +183,13 @@ namespace prova02 {
                             Console.WriteLine($"\n\nTotal de itens no estoque: {codigos.Length}");
 
                             Console.WriteLine("\n\nitens especiais\n");
-                            for (int i = 0; i < contador ; i++) {
+                            for (int i = 0; i < contador; i++) {
                                 Console.Write(itemEspecial[i] + " ");
                             }
                             Console.WriteLine($"\n\n Total de itens especiais no estoque: {contador}");
 
                             for (int i = 0; i < contador; i++) {
-                               soma += itemEspecial[i];
+                                soma += itemEspecial[i];
                             }
                             Console.WriteLine($" Soma dos codigos especiais: {soma}");
 
@@ -197,10 +197,47 @@ namespace prova02 {
                             continuar = Console.ReadLine();
                             Console.Clear();
                         }
-                        Console.WriteLine("Controle De Estoque");
+
                         break;
                     case 5:
-                        Console.WriteLine("Analise De Lista Com Interrupcao");
+                        while (continuar != "n") {
+                            Console.WriteLine("*******************Analise De Lista Com Interrupcao**********************\n\n\n");
+
+                            int[] numeros = { 14, 9, 22, 17, 6, 31, 18, 5, 27, 40, 12, 3, -1, 50, 21 };
+                            int menorNumeroPar = 0;
+                            int somaNumerosImpar = 0;
+
+                            for (int i = 0; i < numeros.Length; i++) {
+
+                                if (numeros[i] == -1) {
+                                    Console.WriteLine("\n\nNúmero -1 encontrado. Interrompendo a análise da lista.\n");
+                                   
+                                }
+                                if (numeros[i] % 2 == 0) {
+                                    if (i == 0 || numeros[i] < menorNumeroPar) {
+                                        menorNumeroPar = numeros[i];
+                                    }
+                                }
+                                else {
+                                    somaNumerosImpar += numeros[i];
+                                }
+                            }
+                            Console.WriteLine("\nFim da análise");
+                            Console.WriteLine($"\nO menor numero Par encontrado foi: {menorNumeroPar}");
+                            Console.WriteLine($"\nA soma dos numeros Impares encontrados foi: {somaNumerosImpar}");
+
+
+
+
+
+
+
+
+
+                            Console.WriteLine("\n\n\ndeseja repetir digite 's', se quiser sair digite 'n'.");
+                            continuar = Console.ReadLine();
+                            Console.Clear();
+                        }
                         break;
                     case 6:
                         Console.WriteLine("Desafio Final Raciocinio");
