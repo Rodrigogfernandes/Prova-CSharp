@@ -211,7 +211,7 @@ namespace prova02 {
 
                                 if (numeros[i] == -1) {
                                     Console.WriteLine("\n\nNúmero -1 encontrado. Interrompendo a análise da lista.\n");
-                                   
+
                                 }
                                 if (numeros[i] % 2 == 0) {
                                     if (i == 0 || numeros[i] < menorNumeroPar) {
@@ -233,14 +233,14 @@ namespace prova02 {
                         break;
 
                     case 6:
-                        
+
                         while (continuar != "n") {
-                          double saldo = 1000;
+                            double saldo = 1000;
                             int sair = 0;
                             string mensagem = "";
                             string mensagem2 = "";
                             while (sair != 4) {
-                            Console.WriteLine("      *******************Desafio Final Raciocinio**********************\n\n\n");
+                                Console.WriteLine("      *******************Desafio Final Raciocinio**********************\n\n\n");
 
                                 Console.WriteLine(@$" 
                  +---------------------------+ 
@@ -253,7 +253,7 @@ namespace prova02 {
                  +---------------------------+
                                 ");
                                 Console.Write("                Digite a opção desejada: ");
-                                if (!int.TryParse(Console.ReadLine(), out sair)|| sair < 1 || sair > 4) {
+                                if (!int.TryParse(Console.ReadLine(), out sair) || sair < 1 || sair > 4) {
                                     Console.Clear();
                                     Console.WriteLine("Opção inválida. Tente novamente.");
                                     continue;
@@ -295,18 +295,15 @@ namespace prova02 {
                                         break;
                                     case 4:
                                         Console.WriteLine("Saindo do sistema. Obrigado por usar nosso serviço!\n");
+                                        continuar = "n";
+                                        Console.Clear();
                                         break;
                                 }
 
-
                             }
 
-                           
-                            Console.WriteLine("\n\n\ndeseja repetir digite 's', se quiser sair digite 'n'.");
-                            continuar = Console.ReadLine();
-                            Console.Clear();
                         }
-                        Console.WriteLine("Desafio Final Raciocinio");
+
                         break;
                     default:
                         Console.WriteLine("Opção inválida. Tente novamente.");
